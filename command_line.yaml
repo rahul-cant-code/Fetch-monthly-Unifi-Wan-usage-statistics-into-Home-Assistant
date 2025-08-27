@@ -1,0 +1,8 @@
+#command-line
+- sensor:
+    name: "UDM Wan Monthly Usage"
+    unique_id: "udm_wan_monthly_usage"
+    command: "/config/scripts/get_udm_monthly_usage.sh"
+    scan_interval: 3600 # once every 6 hours
+    command_timeout: 30
+    value_template: "{{ value }}"
