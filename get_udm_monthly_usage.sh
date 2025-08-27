@@ -1,6 +1,6 @@
 #!/bin/bash
 UDM_IP=$(grep udm_ip /config/secrets.yaml | awk '{ print $2 }')
-UDM_API_KEY=$(grep udm_api /config/secrets.yaml | awk '{ print $2 }')
+UDM_API_KEY=$(grep udm_api_key /config/secrets.yaml | awk '{ print $2 }')
 
 RESPONSE=$(curl -sk \
   -H "X-API-KEY: $UDM_API_KEY" \
