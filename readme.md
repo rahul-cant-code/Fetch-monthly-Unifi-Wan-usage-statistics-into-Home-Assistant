@@ -20,23 +20,23 @@ state: 0.0
 
 
 ## Pre-requisite
-A Unifi user login is required as v2 API requires authenticated session to access any data.
+A Unifi API key is required.
 
-A local user with view-only access is enough.
+Generate a fresh API key from `Control Panel > Integrations` or re-use existing API key.
+
 
 ## Configuration
 
 ### 1. Shell script
 Place `get_udm_monthly_usage.sh` file in `config/scripts/`
 
-* Set your UDM IP, username and password in your secrets.yaml file
+* Set your UDM IP and API key in your secrets.yaml file
 * If you do not have or do not want to use secrets.yaml, directly configure the values in the sh file.
 
 e.g (include quotes):
 ```
-UDM_USER="homeassistant"
-UDM_PASS="12345"
 UDM_IP="192.168.1.1"
+UDM_API_KEY="12345678"
 ```
 
 ### 2. Place command_line file or copy code to wherever you are maintaining command_line scripts

@@ -1,15 +1,10 @@
 #!/bin/bash
-UDM_USER=$(grep udm_user /config/secrets.yaml | awk '{ print $2 }')
-UDM_PASS=$(grep udm_pass /config/secrets.yaml | awk '{ print $2 }')
 UDM_IP=$(grep udm_ip /config/secrets.yaml | awk '{ print $2 }')
-COOKIE_FILE="/config/scripts/udm_cookie.txt"
+UDM_API_KEY=$(grep udm_api /config/secrets.yaml | awk '{ print $2 }')
 
-curl -sk -c "$COOKIE_FILE" -X POST \
-  -H "Content-Type: application/json" \
-  -d "{\"username\":\"$UDM_USER\", \"password\":\"$UDM_PASS\"}" \
-  "https://$UDM_IP/api/auth/login" > /dev/null
-
-RESPONSE=$(curl -sk -b "$COOKIE_FILE" \
+RESPONSE=$(curl -sk \
+  -H "X-API-KEY: $UDM_API_KEY" \
+  -H "Accept: application/json" \
   "https://$UDM_IP/proxy/network/v2/api/site/default/aggregated-dashboard?historySeconds=864000")
 
 # Extract WAN1 data
@@ -44,5 +39,3 @@ cat << EOF
   }
 }
 EOF
-
-rm -f "$COOKIE_FILE"
