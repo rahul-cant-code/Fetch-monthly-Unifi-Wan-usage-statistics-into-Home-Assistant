@@ -30,7 +30,7 @@ A local user with view-only access is enough.
 Place `get_udm_monthly_usage.sh` file in `config/scripts/`
 
 * The default code passes UDM IP, username and password via secrets.yaml
-* If you do not have or want to use secrets.yaml, directly configure the values in the sh file.
+* If you do not have or do not want to use secrets.yaml, directly configure the values in the sh file.
 
 e.g (include quotes):
 ```
